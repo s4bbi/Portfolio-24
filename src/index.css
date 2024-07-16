@@ -3,41 +3,41 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: Matter-Light;
+    font-family: Matter-Light, sans-serif;
     src: url(./src/fonts/Matter-Light.otf) format(opentype);
 }
 
 @font-face {
-    font-family: Matter-Regular;
+    font-family: Matter-Regular, sans-serif;
     src: url(./src/fonts/Matter-Regular.otf) format(opentype);
 }
 
 @font-face {
-    font-family: Matter-SemiBold;
+    font-family: Matter-SemiBold, sans-serif;
     src: url(./src/fonts/Matter-SemiBold.otf) format(opentype);
 }
 
 @font-face {
-    font-family: Matter-Heavy;
+    font-family: Matter-Heavy, sans-serif;
     src: url(./src/fonts/Matter-Heavy.otf) format(opentype);
 }
 
 @font-face {
-    font-family: With-You;
+    font-family: With-You, sans-serif;
     src: url(./src/fonts/Withyou.ttf) format(opentype);
 }
 
 @font-face {
-    font-family: ClashDisplay-Light;
+    font-family: ClashDisplay-Light, sans-serif;
     src: url(./src/fonts/ClashDisplay-Light.otf) format(opentype);
 }
 
 @font-face {
-    font-family: ClashDisplay-Medium;
+    font-family: ClashDisplay-Medium, sans-serif;
     src: url(./src/fonts/ClashDisplay-Medium.otf) format(opentype);
 }
 
 @font-face {
-    font-family: ClashDisplay-Semibold;
+    font-family: ClashDisplay-Semibold, sans-serif;
     src: url(./src/fonts/ClashDisplay-Semibold.otf) format(opentype);
 }
