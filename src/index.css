@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: Matter-Light;
+    src: url(./src/fonts/Matter-Light.otf) format(opentype);
+}
+
+@font-face {
+    font-family: Matter-Regular;
+    src: url(./src/fonts/Matter-Regular.otf) format(opentype);
+}
+
+@font-face {
+    font-family: Matter-SemiBold;
+    src: url(./src/fonts/Matter-SemiBold.otf) format(opentype);
+}
+
+@font-face {
+    font-family: Matter-Heavy;
+    src: url(./src/fonts/Matter-Heavy.otf) format(opentype);
+}
+
+@font-face {
+    font-family: With-You;
+    src: url(./src/fonts/Withyou.ttf) format(opentype);
+}
+
+@font-face {
+    font-family: ClashDisplay-Light;
+    src: url(./src/fonts/ClashDisplay-Light.otf) format(opentype);
+}
+
+@font-face {
+    font-family: ClashDisplay-Medium;
+    src: url(./src/fonts/ClashDisplay-Medium.otf) format(opentype);
+}
