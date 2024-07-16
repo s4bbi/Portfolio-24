@@ -6,7 +6,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily:{
+      fontFamily: {
         mL: "Matter-Light",
         mR: "Matter-Regular",
         mSB: "Matter-SemiBold",
@@ -14,9 +14,14 @@ module.exports = {
         wY: "With-You",
         cdL: "ClashDisplay-Light",
         cdM: "ClashDisplay-Medium",
+        cdSB: "ClashDisplay-Semibold",
+      },
+      colors: {
+        white: "#E5E5E0",
+        blackL: "#3A3733",
+        blackD: "#141413"
       }
     },
   },
   plugins: [],
 }
-

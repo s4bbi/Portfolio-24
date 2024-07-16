@@ -36,3 +36,8 @@
     font-family: ClashDisplay-Medium;
     src: url(./src/fonts/ClashDisplay-Medium.otf) format(opentype);
 }
+
+@font-face {
+    font-family: ClashDisplay-Semibold;
+    src: url(./src/fonts/ClashDisplay-Semibold.otf) format(opentype);
+}
