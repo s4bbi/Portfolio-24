@@ -4,7 +4,7 @@ const Slide2 = () => {
   return (
     <div className='h-screen bg-blackD flex justify-center items-center'>
       <div className="px-14 flex flex-col items-center font-mR">
-        <div className="text-white text-4xl md:text-5xl font-normal font-Matter">
+        <div className="text-white text-3xl md:text-5xl font-normal font-Matter">
           <span>A </span>
           <span className="font-semibold">Versatile </span>
           <span className="font-semibold">Lad </span>
