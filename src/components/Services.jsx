@@ -6,7 +6,7 @@ const Services = () => {
                 <hr className="h-[2px] bg-black"/>                    
             </div>
             <p className="font-cdSB text-xl md:text-3xl lg:text-5xl text-blackD">&lt; SERVICES &gt;</p>
-            <div className="font-mB text-5xl md:text-7xl lg:text-9xl py-4 lg:py-8 flex flex-col gap-4">
+            <div className="font-mB text-[32px] md:text-7xl lg:text-9xl py-4 lg:py-8 flex flex-col gap-4">
                 <p>UI/UX DESIGN</p>
                 <p className="text-right">DEVELOPMENT</p>
                 <p>SEO</p>
