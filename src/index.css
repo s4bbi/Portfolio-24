@@ -18,6 +18,11 @@
 }
 
 @font-face {
+    font-family: Matter-Bold;
+    src: url(../src/fonts/Matter-Bold.otf) format(opentype);
+}
+
+@font-face {
     font-family: Matter-Heavy;
     src: url(../src/fonts/Matter-Heavy.otf) format(opentype);
 }

@@ -3,8 +3,8 @@ import React from 'react';
 const Slide2 = () => {
   return (
     <div className='h-screen bg-blackD flex justify-center items-center'>
-      <div className="px-14 flex flex-col items-center font-mR">
-        <div className="text-white text-3xl md:text-5xl font-normal font-Matter">
+      <div className="px-6 md:px-14 flex flex-col items-center font-mR">
+        <div className="text-white text-3xl md:text-4xl lg:text-5xl font-normal font-Matter">
           <span>A </span>
           <span className="font-semibold">Versatile </span>
           <span className="font-semibold">Lad </span>
@@ -15,7 +15,9 @@ const Slide2 = () => {
           <span className="font-semibold">UI/UX</span>
           <span> design, combining technical expertise with a creative mindset to create engaging, </span>
           <span className="font-semibold">minimalistic</span>
-          <span> and user-friendly digital experiences.</span>
+          <span> and </span>
+          <span className="font-semibold">user-friendly</span>
+          <span> digital experiences.</span>
         </div>
       </div>
     </div>

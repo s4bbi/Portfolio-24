@@ -10,6 +10,7 @@ module.exports = {
         mL: "Matter-Light",
         mR: "Matter-Regular",
         mSB: "Matter-SemiBold",
+        mB: "Matter-Bold",
         mH: "Matter-Heavy",
         wY: "With-You",
         cdL: "ClashDisplay-Light",

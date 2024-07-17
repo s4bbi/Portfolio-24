@@ -43,7 +43,7 @@ const Hero = () => {
         </p>
         <p className="font-mSB origin-top-right rotate-90">
           <span className="text-[#AAAAAA]">SOUND</span>{" "}
-          <button id="soundButton" onClick={toggleSound}>
+          <button id="soundButton" onClick={toggleSound} className='text-[#3A3733]'>
             {isSoundOn ? "ON" : "OFF"}
           </button>
         </p>
