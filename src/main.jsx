@@ -4,6 +4,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import Header from './components/Header.jsx'
 import Homepage from './pages/Homepage.jsx'
+import SmoothScrolling from './utils/SmoothScrolling.jsx'
 
 const AppComponent = () => {
   return (
@@ -28,6 +29,9 @@ const AppRouter = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={AppRouter} /> 
+    <SmoothScrolling>
+      <RouterProvider router={AppRouter} /> 
+    </SmoothScrolling>
+    
   </React.StrictMode>,
 )
