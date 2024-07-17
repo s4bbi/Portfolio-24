@@ -33,13 +33,13 @@ const Hero = () => {
       <div className="flex flex-col md:flex-row font-cdM text-3xl md:text-6xl gap-2 md:gap-5 justify-center items-center text-center">
         <p>&lt; Web Developer /&gt;</p>
         <p className="hidden md:inline">•</p>
-        <p className='flex gap-2'>UI/UX <span className="font-wY text-4xl md:text-7xl bg-gradient-to-r from-[#95FFC0] via-[#FBD786] to-[#F7797D] text-transparent bg-clip-text">
+        <p className='flex gap-4'>UI/UX <span className="font-wY text-4xl md:text-7xl bg-gradient-to-r from-[#22054F] via-[#9065D1] to-[#5FFBF1] text-transparent bg-clip-text">
         Designer </span></p>
       </div>
       
       <div className="fixed bottom-0 left-0 right-0 px-6 flex justify-between items-center w-full">
         <p className="font-mL origin-top-left -rotate-90">
-          <span className="text-[#AAAAAA] font-mSB">S4BBI</span>
+          <span className="text-[#AAAAAA] font-mR">S4BBI</span>
         </p>
         <p className="font-mSB origin-top-right rotate-90">
           <span className="text-[#AAAAAA]">SOUND</span>{" "}

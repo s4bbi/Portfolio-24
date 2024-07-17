@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.svg';
 import icon from '../assets/icon.svg';
 import { AiOutlineClose } from 'react-icons/ai';
@@ -13,9 +14,11 @@ const Header = () => {
 
   return (
     <div className="fixed top-0 left-0 w-full bg-transparent z-50">
-      <div className="text-lg text-black mx-2 py-3 flex justify-between items-center lg:mx-6">
+      <div className="text-lg mx-2 py-3 flex justify-between items-center lg:mx-6">
         <div>
-          <img src={logo} alt="Logo" className="w-12 lg:w-16" />
+          <Link to="/">
+            <img src={logo} alt="Logo" className="w-12 lg:w-16" />
+          </Link>
         </div>
         <div className="flex gap-8 lg:gap-24 justify-between items-center pr-1">
           <button className="font-mL bg-blackL p-1 rounded-3xl w-24 text-base text-white">
@@ -32,7 +35,7 @@ const Header = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-full sm:w-96 lg:w-[575px] bg-black shadow-[0_13px_14px_rgba(0,0,0,0.25)] transition-transform duration-1000 ${
+        className={`fixed top-0 right-0 h-full w-full sm:w-96 lg:w-[575px] bg-blackD shadow-[0_13px_14px_rgba(0,0,0,0.25)] transition-transform duration-1000 ${
           isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >

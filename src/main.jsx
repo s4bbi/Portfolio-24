@@ -8,7 +8,6 @@ import Homepage from './pages/Homepage.jsx'
 const AppComponent = () => {
   return (
     <div>
-      <Header />
       <Outlet />
     </div>
   )
