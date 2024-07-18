@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// import gsap from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import sound from "../assets/sound/aruarianDance.wav"
 
 const Hero = () => {
@@ -25,10 +27,22 @@ const Hero = () => {
     setIsSoundOn(!isSoundOn);
   };
 
+  // gsap.to(".name", {
+  //   duration:5,
+  //   rotation: 360,
+  //   scale:1,
+  //   scrollTrigger: {
+  //       trigger: ".name",
+  //       markers: true,
+  //       scrub: true
+  //   }
+  // });
+
+
   return (
     <div className="relative flex flex-col justify-center items-center mx-auto gap-10 h-screen bg-white">
       <div className="flex gap-2 font-cdL text-base md:text-lg justify-center tracking-[4px] md:tracking-[5.32px]">
-        <p>YASHPREET SINGH</p>
+        <p className='name'>YASHPREET SINGH</p>
       </div>
       <div className="flex flex-col md:flex-row font-cdM text-3xl md:text-6xl gap-2 md:gap-5 justify-center items-center text-center">
         <p>&lt; Web Developer /&gt;</p>
