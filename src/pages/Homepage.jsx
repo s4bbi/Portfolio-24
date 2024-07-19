@@ -6,6 +6,7 @@ import Services from '../components/Services.jsx'
 import Projects from '../components/Projects.jsx'
 import About from '../components/About.jsx'
 import Contact from '../components/Contact.jsx'
+import Footer from '../components/Footer.jsx'
 
 const Homepage = () => {
   return (
@@ -17,6 +18,7 @@ const Homepage = () => {
       <Projects />
       <About />
       <Contact />
+      <Footer />
     </div>  
   )
 }
