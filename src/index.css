@@ -38,6 +38,11 @@
 }
 
 @font-face {
+    font-family: ClashDisplay-Regular ;
+    src: url(../src/fonts/ClashDisplay-Regular.otf) format(opentype);
+}
+
+@font-face {
     font-family: ClashDisplay-Medium;
     src: url(../src/fonts/ClashDisplay-Medium.otf) format(opentype);
 }
@@ -45,4 +50,14 @@
 @font-face {
     font-family: ClashDisplay-Semibold;
     src: url(../src/fonts/ClashDisplay-Semibold.otf) format(opentype);
+}
+
+@font-face {
+    font-family: ClashDisplay-Bold;
+    src: url(../src/fonts/ClashDisplay-Bold.otf) format(opentype);
+}
+
+input::placeholder {
+    color: black; 
+    opacity: 1;
 }

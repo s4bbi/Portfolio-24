@@ -14,8 +14,10 @@ module.exports = {
         mH: "Matter-Heavy",
         wY: "With-You",
         cdL: "ClashDisplay-Light",
+        cdR: "ClashDisplay-Regular",
         cdM: "ClashDisplay-Medium",
         cdSB: "ClashDisplay-Semibold",
+        cdB: "ClashDisplay-Bold"
       },
       colors: {
         white: "#E5E5E0",
