@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"; // Assuming you are using React Router
 
 const Projects = () => {
     return (
-        <div className="w-full px-6 md:px-14 text-white bg-blackD">
+        <div className="w-full px-6 md:px-14 text-white bg-blackD" id="works">
             <div className="py-8 lg:py-16 font-mL text-xs md:text-base">
                 <p className="py-1">PROJECTS</p>
                 <hr className="h-[1px] bg-white"/>                    
@@ -19,8 +19,8 @@ const Projects = () => {
                             <img src={project.imgSrc} alt={`${project.title} Project Image`} />
                         </Link>
                         <div className="flex flex-col sm:flex-row gap-5 sm:justify-between">
-                            <p className="font-mSB text-3xl md:text-4xl">{project.title}</p>
-                            <div className="flex gap-2 font-mL">
+                            <p className="font-mSB text-2xl md:text-4xl">{project.title}</p>
+                            <div className="flex gap-2 font-mL text-xs lg:text-base">
                                 <button className="rounded-full border-white border-2 px-4 sm:px-6 py-2">DESIGN</button>
                                 {project.hasDevelopment && (
                                     <button className="rounded-full border-white border-2 px-4 sm:px-6 py-2">DEVELOPMENT</button>

@@ -12,6 +12,11 @@ const Header = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const handleNavItemClick = () => {
+    // Close the sidebar when a nav item is clicked
+    setIsSidebarOpen(false);
+  };
+
   return (
     <div className="fixed top-0 left-0 w-full bg-transparent z-50">
       <div className="text-lg mx-2 py-3 flex justify-between items-center lg:mx-6">
@@ -21,9 +26,11 @@ const Header = () => {
           </Link>
         </div>
         <div className="flex gap-8 lg:gap-24 justify-between items-center pr-1">
-          <button className="font-mL bg-blackL p-1 rounded-3xl w-24 text-base text-white">
-            Let's Talk
-          </button>
+          <a href={'#contact'}>
+            <button className="font-mL bg-blackL p-1 rounded-3xl w-24 text-base text-white">
+              Let's Talk
+            </button>
+          </a>  
           <img
             src={icon}
             alt="Icon"
@@ -49,12 +56,13 @@ const Header = () => {
         <div className="h-full flex flex-col justify-evenly z-50">
           <nav className="relative flex flex-col justify-center gap-y-3 px-6 uppercase text-white font-cdSB">
             {['Home', 'Services', 'Works', 'About', 'Contact'].map((item, index) => (
-              <div key={index} className="group relative flex w-fit cursor-pointer items-center">
+              <div key={index} className="group relative flex w-fit cursor-pointer">
                 <div className="w-fit overflow-y-clip">
                   <div style={{ transform: 'none' }}>
                     <a
                       className="inline-block transition-transform duration-700 ease-expo group-hover:translate-x-7 text-4xl sm:text-5xl"
-                      href={`/`}
+                      href={`#${item.toLowerCase()}`}
+                      onClick={handleNavItemClick} // Close sidebar on click
                     >
                       {item}
                     </a>
@@ -88,6 +96,7 @@ const Header = () => {
                     className="group pointer-events-auto relative flex h-fit w-fit transform-none items-center justify-center overflow-hidden rounded-full bg-secondary-300 text-base-small uppercase leading-none tracking-base text-accent-200 border border-secondary-100 px-3 py-1.5 font-medium"
                     target="_blank"
                     href={item.url}
+                    rel="noopener noreferrer"
                   >
                     <span className="absolute z-10 block overflow-hidden text-center">
                       <span className="block h-full w-full translate-y-full bg-accent-600 transition-all duration-500 ease-expo sm:group-hover:translate-y-0 sm:group-hover:rounded-none">

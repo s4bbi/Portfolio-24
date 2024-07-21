@@ -1,6 +1,6 @@
 const Services = () => {
     return (
-        <div className="w-full px-6 md:px-14 text-blackL bg-white">
+        <div className="w-full px-6 md:px-14 text-blackL bg-white pb-6" id="services">
             <div className="py-8 lg:py-16 font-mL text-xs md:text-base">
                 <p className="py-1">WHAT DO I DO?</p>
                 <hr className="h-[2px] bg-blackL"/>                    

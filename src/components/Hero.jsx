@@ -40,7 +40,7 @@ const Hero = () => {
 
 
   return (
-    <div className="relative flex flex-col justify-center items-center mx-auto gap-10 h-screen bg-white">
+    <div className="relative flex flex-col justify-center items-center mx-auto gap-10 h-screen bg-white" id='home'>
       <div className="flex gap-2 font-cdL text-base md:text-lg justify-center tracking-[4px] md:tracking-[5.32px]">
         <p className='name'>YASHPREET SINGH</p>
       </div>
