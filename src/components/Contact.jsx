@@ -4,6 +4,7 @@ import { GoArrowUpRight } from 'react-icons/go';
 import emailjs from 'emailjs-com';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import BackToTopButton from './BackToTopButton';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -48,7 +49,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="w-full px-6 md:px-14 text-blackD bg-white pb-2" id='contact'>
+        <div className="w-full px-6 md:px-14 text-blackD bg-white pb-4" id='contact'>
             <ToastContainer />
             <div className="py-8 lg:py-16 font-mL text-xs md:text-base">
                 <p className="py-1">CONTACT</p>
@@ -63,7 +64,7 @@ const Contact = () => {
                             Let's collaborate to transform ideas into visually stunning and functionally robust digital solutions.
                         </p>
                     </div>
-                    <div className="py-10 lg:py-20 w-full justify-center">
+                    <div className="py-10 lg:py-12 w-full justify-center">
                         <form className="flex flex-col lg:flex-row font-mR flex-wrap gap-10 text-sm md:text-lg " onSubmit={handleSubmit}>
                             <div className="flex justify-between w-full gap-2">
                                 <input
@@ -99,6 +100,9 @@ const Contact = () => {
                         </button>
                     </div>
                 </div>
+            </div>
+            <div className='flex justify-end w-full'>
+                <BackToTopButton />
             </div>
         </div>
     );
