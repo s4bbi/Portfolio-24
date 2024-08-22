@@ -13,7 +13,7 @@ const SocialLink = ({ href, imgSrc, label }) => (
 const Footer = () => {
     return (
         <div>
-            <div className="h-full w-full bg-black text-white px-6 md:px-28 py-8 lg:p5-4 flex flex-col md:flex-row justify-between ">
+            <div className="h-full w-full bg-black text-white px-6 md:px-28 py-8 lg:p5-4 flex flex-col md:flex-row justify-between gap-8">
                 <div className="flex flex-col gap-4 md:gap-6 font-mR">
                     <p className="text-2xl md:text-3xl font-mSB">Contact Info:</p>
                     <p className="text-lg md:text-xl">singhyashpreet22@gmail.com</p>

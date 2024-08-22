@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import gsap from 'gsap';
 // import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import sound from "../assets/sound/aruarianDance.wav"
+// import SplineModel from './SplineModel';
 
 const Hero = () => {
   const [isSoundOn, setIsSoundOn] = useState(false);
@@ -41,6 +42,7 @@ const Hero = () => {
 
   return (
     <div className="relative flex flex-col justify-center items-center mx-auto gap-10 h-screen bg-white" id='home'>
+      
       <div className="flex gap-2 font-cdL text-base md:text-lg justify-center tracking-[4px] md:tracking-[5.32px]">
         <p className='name'>YASHPREET SINGH</p>
       </div>

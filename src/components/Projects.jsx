@@ -10,8 +10,8 @@ const Projects = () => {
             </div>
             <p className="font-cdSB text-xl md:text-3xl lg:text-5xl text-white">&lt; WORKS &gt;</p>
             {projectData.map((project, index) => (
-                <div key={project.id} className="flex justify-between py-4 lg:py-8 text-white gap-20">
-                    <div className="font-mB hidden md:flex md:text-9xl lg:text-[208px]">
+                <div key={project.id} className="flex justify-between py-4 lg:py-8 text-white gap-44">
+                    <div className="font-mB hidden md:flex md:text-8xl lg:text-[208px]">
                         <p>{`0${index + 1}.`}</p>
                     </div>
                     <div className="flex flex-col gap-5 sm:gap-10">
