@@ -32,8 +32,8 @@ const Hero = () => {
     setIsSoundOn(!isSoundOn);
   };
 
-  // Entry animation on mount
   useEffect(() => {
+    // Fade-in hero section
     gsap.from(heroRef.current, {
       opacity: 0,
       y: 50,
@@ -41,25 +41,30 @@ const Hero = () => {
       ease: "power2.out",
     });
 
+    // Subtle fade & shift on scroll for name
+    gsap.fromTo(
+      nameRef.current,
+      { y: 0, opacity: 1 },
+      {
+        y: -20,
+        opacity: 0.5,
+        scrollTrigger: {
+          trigger: nameRef.current,
+          start: "top center",
+          end: "top 100px",
+          scrub: true,
+          // markers: true,
+        },
+      }
+    );
+
+    // Intro animation
     gsap.from(introRef.current, {
       opacity: 0,
       y: 30,
       delay: 0.5,
       duration: 1,
       ease: "power2.out",
-    });
-
-    // Scroll-triggered animation for name
-    gsap.to(nameRef.current, {
-      rotation: 360,
-      scale: 1.3,
-      scrollTrigger: {
-        trigger: nameRef.current,
-        start: "top 80%",
-        end: "top 10%",
-        scrub: true,
-        // markers: true,
-      },
     });
   }, []);
 
