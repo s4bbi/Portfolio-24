@@ -70,7 +70,7 @@ const Hero = () => {
 
   return (
     <div
-      className="relative flex flex-col justify-center items-center mx-auto gap-10 h-screen bg-white"
+      className="relative flex flex-col justify-center items-center mx-auto gap-10 h-screen bg-[#E5E5E0]"
       id="home"
       ref={heroRef}
     >
