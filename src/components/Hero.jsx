@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import sound from "../assets/sound/aruarianDance.wav";
+import sound from "../assets/sound/astrothunder_outro.wav";
 
 gsap.registerPlugin(ScrollTrigger);
 
