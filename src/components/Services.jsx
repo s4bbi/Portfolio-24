@@ -15,7 +15,7 @@ const Services = () => {
                 gsap.fromTo(el, 
                     { 
                         opacity: 0, 
-                        x: index % 2 === 0 ? -100 : 100 
+                        x: index % 2 === 0 ? -50 : 50 
                     }, 
                     { 
                         opacity: 1, 
@@ -26,7 +26,7 @@ const Services = () => {
                             trigger: el,
                             start: "top 80%",
                             end: "bottom 20%",
-                            scrub: true,  // reversible scroll animation
+                            scrub: true,
                         }
                     }
                 );
@@ -51,7 +51,7 @@ const Services = () => {
     }, []);
 
     return (
-        <div ref={containerRef} className="w-screen px-6 md:px-14 text-blackL bg-white pb-6" id="services">
+        <div ref={containerRef} className="w-screen px-6 md:px-14 text-blackL bg-white pb-6 h-full overflow-x-hidden" id="services">
             <div className="py-8 lg:py-16 font-mL text-xs md:text-base">
                 <p className="py-1">WHAT DO I DO?</p>
                 <hr className="h-[2px] bg-blackL"/>                    

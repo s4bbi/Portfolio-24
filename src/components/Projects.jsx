@@ -62,33 +62,41 @@ const Projects = () => {
     }, []);
 
     return (
-        <div ref={containerRef} className="w-full px-6 md:px-14 text-white bg-blackD" id="works">
+        <div ref={containerRef} className="w-full px-6 md:px-14 text-white bg-blackD pb-6" id="works">
             <div className="py-8 lg:py-16 font-mL text-xs md:text-base">
                 <p className="py-1">PROJECTS</p>
                 <hr className="h-[1px] bg-white"/>                    
             </div>
             <p className="font-cdSB text-xl md:text-3xl lg:text-5xl text-white">&lt; WORKS &gt;</p>
             {projectData.map((project, index) => (
-                <div key={project.id} className="flex justify-between py-4 lg:py-8 text-white gap-44 project-item">
+                <div key={project.id} className="flex justify-between py-4 lg:py-8 text-white gap-12 md:gap-20 project-item">
                     <div className="font-mB hidden md:flex md:text-8xl lg:text-[208px] project-number">
                         <p>{`0${index + 1}.`}</p>
                     </div>
-                    <div className="flex flex-col gap-5 sm:gap-10">
+                    <div className="flex flex-col gap-5 sm:gap-10 w-full max-w-2xl">
                         <Link to={project.link} target="_blank" rel="noopener noreferrer">
-                            <img 
-                                src={project.imgSrc} 
-                                alt={`${project.title} Project Image`} 
-                                className="project-image"
-                            />
+                            <div className="w-full max-w-xl mx-auto rounded-lg overflow-hidden shadow-lg bg-[##141413]]">
+                                <img
+                                    src={project.imgSrc}
+                                    alt={`${project.title} Project Image`}
+                                    className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105 project-image"
+                                />
+                            </div>
                         </Link>
                         <div className="flex flex-col sm:flex-row gap-5 sm:justify-between project-content">
                             <p className="font-mSB text-2xl md:text-4xl">{project.title}</p>
-                            <div className="flex gap-2 font-mL text-xs lg:text-base">
-                                <button className="rounded-full border-white border-2 px-4 sm:px-6 py-2">DESIGN</button>
+                            <div className="flex flex-wrap gap-2 font-mL text-xs lg:text-base items-center">
+                                <button className="rounded-full border-white border-2 px-4 sm:px-6 py-2 transition-colors duration-200 hover:bg-white hover:text-blackD">
+                                    DESIGN
+                                </button>
                                 {project.hasDevelopment && (
-                                    <button className="rounded-full border-white border-2 px-4 sm:px-6 py-2">DEVELOPMENT</button>
+                                    <button className="rounded-full border-white border-2 px-4 sm:px-6 py-2 transition-colors duration-200 hover:bg-white hover:text-blackD">
+                                        DEVELOPMENT
+                                    </button>
                                 )}
-                                <button className="rounded-full bg-white px-4 sm:px-6 text-blackD">{project.year}</button>
+                                <button className="rounded-full bg-white px-4 sm:px-6 py-2 text-blackD font-bold">
+                                    {project.year}
+                                </button>
                             </div>
                         </div>
                     </div>
