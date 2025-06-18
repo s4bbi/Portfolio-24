@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import sound from "../assets/sound/astrothunder_outro.wav";
+import sound from "../assets/sound/astrothunder.wav";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,15 +16,23 @@ const Hero = () => {
     const audioFile = new Audio(sound);
     audioFile.loop = true;
     setAudio(audioFile);
+    return () => {
+      if (audioFile) {
+        audioFile.pause();
+        audioFile.currentTime = 0;
+      }
+    };
   }, []);
 
   useEffect(() => {
-    if (audio) {
-      if (isSoundOn) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
+    if (!audio) return;
+    if (isSoundOn) {
+      // Only try to play if the user has interacted with the page
+      // or if you have a user gesture (e.g., clicking the sound button)
+      // In practice, this will work if the user clicks the sound button
+      audio.play().catch(e => console.error("Audio play failed:", e));
+    } else {
+      audio.pause();
     }
   }, [isSoundOn, audio]);
 
@@ -96,7 +104,7 @@ const Hero = () => {
           <span className="text-[#AAAAAA] font-mR">S4BBI</span>
         </p>
         <p className="font-mSB origin-top-right rotate-90">
-          <span className="text-[#AAAAAA]">SOUND</span>{" "}
+          <span className="text-[#3A3733]">SOUND</span>{" "}
           <button id="soundButton" onClick={toggleSound} className="text-[#3A3733]">
             {isSoundOn ? "ON" : "OFF"}
           </button>
