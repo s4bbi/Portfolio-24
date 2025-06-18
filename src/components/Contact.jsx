@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "../index.css";
 import { GoArrowUpRight } from 'react-icons/go';
 import emailjs from 'emailjs-com';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import BackToTopButton from './BackToTopButton';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -12,6 +16,59 @@ const Contact = () => {
         email: '',
         message: ''
     });
+
+    const containerRef = useRef(null);
+    const lettersRef = useRef([]);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Animate each letter individually
+            gsap.from(lettersRef.current, {
+                opacity: 0,
+                y: -50,
+                stagger: 0.1,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".sayhi-heading",
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    scrub: true
+                }
+            });
+
+            // Animate subtext
+            gsap.from(".contact-subtext", {
+                opacity: 0,
+                y: 50,
+                duration: 1.5,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 85%",
+                    end: "bottom 20%",
+                    scrub: true
+                }
+            });
+
+            // Animate form
+            gsap.from(".contact-form", {
+                opacity: 0,
+                y: 60,
+                duration: 1.5,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".contact-form",
+                    start: "top 85%",
+                    end: "bottom 20%",
+                    scrub: true
+                }
+            });
+
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -35,7 +92,7 @@ const Contact = () => {
                     hideProgressBar: true
                   });
                   
-                setFormData({ name: '', email: '', message: '' }); // Clear form
+                setFormData({ name: '', email: '', message: '' }); 
             }, (err) => {
                 console.error('FAILED...', err);
                 toast.error('Failed to send message. Please try again later.', {
@@ -48,8 +105,11 @@ const Contact = () => {
             });
     };
 
+    // Manually split the heading text into spans
+    const sayHiText = "SAY HI!";
+
     return (
-        <div className="w-full px-6 md:px-14 text-blackD bg-white pb-4" id='contact'>
+        <div ref={containerRef} className="w-full px-6 md:px-14 text-blackD bg-white pb-4" id='contact'>
             <ToastContainer />
             <div className="py-8 lg:py-16 font-mL text-xs md:text-base">
                 <p className="py-1">CONTACT</p>
@@ -58,13 +118,24 @@ const Contact = () => {
             <div className="flex flex-col">
                 <div className="w-full lg:w-9/12 mx-auto justify-center">
                     <div className="flex flex-col items-center justify-center gap-6">
-                        <p className="text-base lg:text-xl font-cdR">GET IN TOUCH!</p>
-                        <p className="text-5xl lg:text-9xl font-cdB">SAY HI!</p>
-                        <p className="text-xs lg:text-2xl font-cdR text-center">
+                        <p className="text-base lg:text-xl font-cdR contact-subtext">GET IN TOUCH!</p>
+                        <p className="text-5xl lg:text-9xl font-cdB sayhi-heading">
+                            {sayHiText.split("").map((char, index) => (
+                                <span
+                                    key={index}
+                                    ref={el => lettersRef.current[index] = el}
+                                    style={{ display: "inline-block" }}
+                                >
+                                    {char}
+                                </span>
+                            ))}
+                        </p>
+                        <p className="text-xs lg:text-2xl font-cdR text-center contact-subtext">
                             Let's collaborate to transform ideas into visually stunning and functionally robust digital solutions.
                         </p>
                     </div>
-                    <div className="py-10 lg:py-12 w-full justify-center">
+
+                    <div className="py-10 lg:py-12 w-full justify-center contact-form">
                         <form className="flex flex-col lg:flex-row font-mR flex-wrap gap-10 text-sm md:text-lg " onSubmit={handleSubmit}>
                             <div className="flex justify-between w-full gap-2">
                                 <input
