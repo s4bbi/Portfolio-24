@@ -1,85 +1,201 @@
-import React, { useEffect, useRef } from 'react';
-import yashpreet from "../assets/yashpreet.png";
+import React, { useEffect, useRef, useState } from 'react';
+import "../index.css";
+import { GoArrowUpRight } from 'react-icons/go';
+import emailjs from 'emailjs-com';
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import BackToTopButton from './BackToTopButton';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SplitType from 'split-type';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const About = () => {
-  const containerRef = useRef(null);
+const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Animate heading
-      gsap.from(".about-heading", {
-        opacity: 0,
-        y: 50,
-        duration: 1.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 85%",
-          toggleActions: "play none none reverse"
-        }
-      });
+    const containerRef = useRef(null);
+    const sayHiContainerRef = useRef(null);
+    const lettersRef = useRef([]);
 
-      // Animate image (slide up from bottom)
-      gsap.from(".about-image", {
-        opacity: 0,
-        y: 100,
-        duration: 1.5,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".about-image",
-          start: "top 90%",
-          end: "bottom 20%",
-          scrub: true
-        }
-      });
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Animate full SAY HI container sliding into place
+            gsap.from(sayHiContainerRef.current, {
+                opacity: 0,
+                y: 80,
+                duration: 1.2,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: sayHiContainerRef.current,
+                    start: "top 85%",
+                    end: "bottom 20%",
+                    scrub: true
+                }
+            });
 
-      // Split text into words for fancy staggered reveal
-      const split = new SplitType('.about-text', { types: 'words' });
+            // Animate letters individually with stagger opacity only
+            gsap.from(lettersRef.current, {
+                opacity: 0,
+                stagger: 0.1,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: sayHiContainerRef.current,
+                    start: "top 85%",
+                    end: "bottom 20%",
+                    scrub: true
+                }
+            });
 
-      gsap.from(split.words, {
-        opacity: 0,
-        y: 40,
-        stagger: 0.05,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".about-text",
-          start: "top 80%",
-          end: "bottom 20%",
-          scrub: true
-        }
-      });
+            gsap.from(".contact-subtext", {
+                opacity: 0,
+                y: 50,
+                duration: 1.5,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 90%",
+                    end: "bottom 20%",
+                    scrub: true
+                }
+            });
 
-    }, containerRef);
+            gsap.from(".contact-form", {
+                opacity: 0,
+                y: 60,
+                duration: 1.5,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".contact-form",
+                    start: "top 85%",
+                    end: "bottom 20%",
+                    scrub: true
+                }
+            });
 
-    return () => ctx.revert();
-  }, []);
+        }, containerRef);
 
-  return (
-    <div ref={containerRef} className="w-full px-6 md:px-14 text-white bg-blackD pb-10" id='about'>
-      <div className="py-8 lg:py-16 font-mL text-xs md:text-base">
-        <p className="py-1">ABOUT ME</p>
-        <hr className="h-[1px] bg-white"/>                    
-      </div>
-      <p className="font-cdSB text-xl md:text-3xl lg:text-5xl text-white about-heading">&lt; A LITTLE ABOUT ME &gt;</p>
+        return () => ctx.revert();
+    }, []);
 
-      <div className='py-10 flex items-center justify-center w-52 md:w-64 lg:w-80 mx-auto'>
-        <img src={yashpreet} alt="Yours Truly" className="about-image" />
-      </div>
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
 
-      <div className="flex flex-col items-center font-mR pb-4 lg:pb-10">
-        <div className="text-white text-2xl md:text-3xl lg:text-4xl font-normal font-Matter about-text">
-          Hello! I'm <span className='font-mSB'> Yashpreet Singh</span>, a sophomore passionate about <span className='font-mSB'> web development </span> and <span className='font-mSB'> UI/UX design</span>. I love transforming ideas into <span className='font-mSB'> visually striking</span> and <span className='font-mSB'> user-friendly </span> digital experiences with a <span className='font-mSB'>minimalist touch</span>. 
-          Join me on this creative journey as I explore the ever-evolving world of technology, bringing innovation and seamless design to life. Let's turn concepts into captivating and streamlined online realities together!
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        emailjs.send('service_6otb37s', 'template_utmqi3p', formData, 'eLbK8Q5LoQhvi1aeg')
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+                toast.success('Your Message is delivered!', {
+                    position: "top-center",
+                    autoClose: 3000,
+                    transition: Slide, 
+                    theme: "dark",
+                    hideProgressBar: true
+                  });
+                  
+                setFormData({ name: '', email: '', message: '' }); 
+            }, (err) => {
+                console.error('FAILED...', err);
+                toast.error('Failed to send message. Please try again later.', {
+                    position: "top-center",
+                    autoClose: 3000,
+                    transition: Slide, 
+                    theme: "dark",
+                    hideProgressBar: true
+                });
+            });
+    };
+
+    const sayHiText = "SAY HI!";
+
+    return (
+        <div ref={containerRef} className="w-full px-6 md:px-14 text-blackD bg-white pb-4" id='contact'>
+            <ToastContainer />
+            <div className="py-8 lg:py-16 font-mL text-xs md:text-base">
+                <p className="py-1">CONTACT</p>
+                <hr className="h-[2px] bg-blackD" />
+            </div>
+            <div className="flex flex-col">
+                <div className="w-full lg:w-9/12 mx-auto justify-center">
+                    <div className="flex flex-col items-center justify-center gap-6">
+                        <p className="text-base lg:text-xl font-cdR contact-subtext">GET IN TOUCH!</p>
+
+                        <div ref={sayHiContainerRef} className="sayhi-heading">
+                        <p className="text-5xl lg:text-9xl font-cdB">
+                            {sayHiText.split("").map((char, index) => (
+                                char === " " ? (
+                                    <span key={index} style={{ display: "inline-block", width: "0.5em" }}></span> 
+                                ) : (
+                                    <span
+                                        key={index}
+                                        ref={el => lettersRef.current[index] = el}
+                                        style={{ display: "inline-block" }}
+                                    >
+                                        {char}
+                                    </span>
+                                )
+                            ))}
+                        </p>
+                    </div>
+
+                        <p className="text-xs lg:text-2xl font-cdR text-center contact-subtext">
+                            Let's collaborate to transform ideas into visually stunning and functionally robust digital solutions.
+                        </p>
+                    </div>
+
+                    <div className="py-10 lg:py-12 w-full justify-center contact-form">
+                        <form className="flex flex-col lg:flex-row font-mR flex-wrap gap-10 text-sm md:text-lg " onSubmit={handleSubmit}>
+                            <div className="flex justify-between w-full gap-2">
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Your Name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    className="w-full lg:w-96 border-b-2 border-black outline-none bg-white placeholder:text-black"
+                                />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Your E-mail"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    className="w-full lg:w-96 border-b-2 border-black outline-none bg-white placeholder:text-black"
+                                />
+                            </div>
+                            <textarea
+                                name="message"
+                                placeholder="Your Message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                className="w-full lg:w-7/12 outline-none h-52 border-b-2 border-black bg-white placeholder:text-black mt-4 lg:mt-0 resize-none overflow-hidden"
+                                rows="4"
+                            />
+                        </form>
+                        <button type="submit" className="bg-black text-white px-4 h-10 rounded-3xl mt-4 lg:mt-8" onClick={handleSubmit}>
+                            <span className="flex gap-1 font-cdM justify-center items-center text-xs lg:text-base">
+                                Ping Me! <GoArrowUpRight className="stroke-1" />
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div className='flex justify-end w-full'>
+                <BackToTopButton />
+            </div>
         </div>
-      </div>
-    </div>
-  );
-}
+    );
+};
 
-export default About;
+export default Contact;
