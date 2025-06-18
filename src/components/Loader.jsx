@@ -84,7 +84,7 @@ const Loader = ({ onComplete }) => {
   }, [progress, onComplete]);
 
   return (
-    <div ref={loaderRef} className="fixed top-0 left-0 w-full h-full bg-black text-white z-[9999] flex flex-col justify-center items-center">
+    <div ref={loaderRef} className="font-cdB fixed top-0 left-0 w-full h-full bg-black text-white z-[9999] flex flex-col justify-center items-center">
       <div className="relative w-40 h-40 flex justify-center items-center">
         <svg className="absolute w-full h-full">
           <circle
@@ -108,7 +108,7 @@ const Loader = ({ onComplete }) => {
             style={{ transition: 'stroke-dashoffset 0.05s linear' }}
           />
         </svg>
-        <div className="text-3xl font-bold">{Math.floor(progress)}%</div>
+        <div className="text-3xl font-cdB">{Math.floor(progress)}%</div>
       </div>
       <div className="mt-6 text-xl font-mono tracking-wide">
         {welcomeTexts[currentLang]}

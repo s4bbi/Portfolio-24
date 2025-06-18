@@ -33,7 +33,6 @@ const Hero = () => {
   };
 
   useEffect(() => {
-    // Fade-in hero section
     gsap.from(heroRef.current, {
       opacity: 0,
       y: 50,
@@ -41,7 +40,6 @@ const Hero = () => {
       ease: "power2.out",
     });
 
-    // Subtle fade & shift on scroll for name
     gsap.fromTo(
       nameRef.current,
       { y: 0, opacity: 1 },
@@ -53,12 +51,10 @@ const Hero = () => {
           start: "top center",
           end: "top 100px",
           scrub: true,
-          // markers: true,
         },
       }
     );
 
-    // Intro animation
     gsap.from(introRef.current, {
       opacity: 0,
       y: 30,
@@ -70,7 +66,7 @@ const Hero = () => {
 
   return (
     <div
-      className="relative flex flex-col justify-center items-center mx-auto gap-10 h-screen bg-[#E5E5E0]"
+      className="relative flex flex-col justify-center items-center mx-auto gap-10 h-screen bg-[#E5E5E0] w-screen overflow-hidden"
       id="home"
       ref={heroRef}
     >
@@ -95,7 +91,7 @@ const Hero = () => {
         </p>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 px-6 flex justify-between items-center w-full">
+      <div className="fixed bottom-0 left-0 right-0 inset-x-0 flex justify-between items-center px-6">
         <p className="font-mL origin-top-left -rotate-90">
           <span className="text-[#AAAAAA] font-mR">S4BBI</span>
         </p>
