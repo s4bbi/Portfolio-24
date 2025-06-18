@@ -9,18 +9,26 @@ const Slide2 = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".animate-text span", {
-        opacity: 0,
-        y: 50,
-        stagger: 0.1,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none",
+      gsap.fromTo(
+        ".animate-text span",
+        {
+          opacity: 0,
+          y: 60,
         },
-      });
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.5,   // slower appearance
+          ease: "power3.out",
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: true,  // makes it reversible and tied to scroll position
+          },
+        }
+      );
     }, containerRef);
 
     return () => ctx.revert();
