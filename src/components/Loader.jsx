@@ -2,126 +2,95 @@ import React, { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 
 const welcomeTexts = [
-  "Welcome",
-  "ਸਤ ਸ੍ਰੀ ਅਕਾਲ",
-  "स्वागत है",
-  "ようこそ",
-  "Bienvenue",
-  "Willkommen",
-  "환영합니다",
-  "欢迎",
-  "добро пожаловать",
-  "Benvenuto",
-  "Bem-vindo",
-  "Bienvenido",
-  "Witamy",
-  "Tervetuloa",
-  "Καλώς ήρθατε",
-  "Selamat datang",
-  "ยินดีต้อนรับ",
-  "Karibu",
-  "مرحبا",
-  "Velkommen",
-  "வணக்கம்",
-  "স্বাগতম",
+  "Welcome","ਸਤ ਸ੍ਰੀ ਅਕਾਲ","स्वागत है","ようこそ","Bienvenue","Willkommen","환영합니다",
+  "欢迎","добро пожаловать","Benvenuto","Bem-vindo","Bienvenido","Vitajte","Witamy",
+  "Tervetuloa","Καλώς ήρθατε","Selamat datang","ยินดีต้อนรับ","Karibu","ברוך הבא",
+  "مرحبا","Добре дошли","Dobrodošli","Velkomin","ආයුබෝවන්","સ્વાગત છે","வணக்கம்","স্বাগতম"
 ];
 
 const Loader = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
   const [currentLang, setCurrentLang] = useState(0);
-
   const loaderRef = useRef(null);
-  const circleRef = useRef(null);
-  const textRef = useRef(null);
+  const langIntervalRef = useRef(null);
 
   useEffect(() => {
-    const obj = { value: 0 };
+    const totalDuration = 6000;
+    const intervalDuration = 30;
+    const increment = 100 / (totalDuration / intervalDuration);
 
-    gsap.to(obj, {
-      value: 100,
-      duration: 6,
-      ease: "power2.out",
-      onUpdate: () => {
-        setProgress(Math.floor(obj.value));
-      },
-      onComplete: () => {
+    const progressInterval = setInterval(() => {
+      setProgress((prev) => {
+        const newProgress = prev + increment;
+
+        if (newProgress >= 100) {
+          clearInterval(progressInterval);
+
+          if (langIntervalRef.current) {
+            clearInterval(langIntervalRef.current); // stop languages
+          }
+
+          return 100;
+        }
+
+        return newProgress;
+      });
+    }, intervalDuration);
+
+    langIntervalRef.current = setInterval(() => {
+      setCurrentLang((prev) => (prev + 1) % welcomeTexts.length);
+    }, 200);
+
+    return () => {
+      clearInterval(progressInterval);
+      clearInterval(langIntervalRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (progress === 100) {
+      const finishLoading = async () => {
+        // wait for fonts
+        await document.fonts.ready;
+
         gsap.to(loaderRef.current, {
           opacity: 0,
           duration: 1.2,
           ease: "power3.out",
           onComplete: onComplete,
         });
-      },
-    });
+      };
 
-    const langInterval = setInterval(() => {
-      gsap.fromTo(
-        textRef.current,
-        { y: 10, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.4 }
-      );
-
-      setCurrentLang((prev) => (prev + 1) % welcomeTexts.length);
-    }, 250);
-
-    return () => clearInterval(langInterval);
-  }, [onComplete]);
-
-  const circumference = 2 * Math.PI * 70;
-  const offset = circumference - (progress / 100) * circumference;
+      finishLoading();
+    }
+  }, [progress, onComplete]);
 
   return (
     <div
       ref={loaderRef}
-      className="fixed inset-0 bg-black flex flex-col items-center justify-center text-white z-[9999]"
+      className="font-cdB fixed top-0 left-0 w-full h-full bg-black text-white z-[9999] flex flex-col justify-center items-center"
     >
-      {/* Glow Background */}
-      <div className="absolute w-[400px] h-[400px] bg-white/10 blur-[120px] rounded-full"></div>
-
-      {/* Progress Circle */}
-      <div className="relative w-44 h-44 flex items-center justify-center">
-        <svg className="absolute w-full h-full -rotate-90">
+      <div className="relative w-40 h-40 flex justify-center items-center">
+        <svg className="absolute w-full h-full">
+          <circle cx="50%" cy="50%" r="70" stroke="#555" strokeWidth="8" fill="none" />
           <circle
             cx="50%"
             cy="50%"
             r="70"
-            stroke="#222"
-            strokeWidth="6"
+            stroke="#fff"
+            strokeWidth="8"
             fill="none"
-          />
-
-          <circle
-            ref={circleRef}
-            cx="50%"
-            cy="50%"
-            r="70"
-            stroke="url(#gradient)"
-            strokeWidth="6"
-            fill="none"
-            strokeDasharray={circumference}
-            strokeDashoffset={offset}
+            strokeDasharray={440}
+            strokeDashoffset={440 - (progress / 100) * 440}
             strokeLinecap="round"
-            style={{ transition: "stroke-dashoffset 0.15s ease" }}
+            style={{ transition: "stroke-dashoffset 0.05s linear" }}
           />
-
-          <defs>
-            <linearGradient id="gradient">
-              <stop offset="0%" stopColor="#00f5ff" />
-              <stop offset="100%" stopColor="#a855f7" />
-            </linearGradient>
-          </defs>
         </svg>
 
-        <div className="text-4xl font-semibold tracking-wide">
-          {progress}%
-        </div>
+        <div className="text-3xl font-cdB">{Math.floor(progress)}%</div>
       </div>
 
-      {/* Language Text */}
-      <div
-        ref={textRef}
-        className="mt-8 text-lg tracking-widest opacity-80 font-light"
-      >
+      <div className="mt-6 text-xl font-mono tracking-wide">
         {welcomeTexts[currentLang]}
       </div>
     </div>
