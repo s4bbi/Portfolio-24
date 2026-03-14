@@ -9,6 +9,7 @@ import fitsip from "../assets/projectImg/fitsip.png"
 import sp3 from "../assets/projectImg/sp3.0.png"
 import tnp from "../assets/projectImg/tnp.png"
 import oak7 from "../assets/projectImg/oak7.png"
+import goonj26 from "../assets/projectImg/goonj26.png"
 
 export const projectData = [
     {
@@ -81,7 +82,7 @@ export const projectData = [
         imgSrc: tnp,
         year: "2025",
         hasDevelopment: true,
-        link: "https://gbpiet-desk.vercel.app/1"
+        link: "https://gbpiet-desk.vercel.app/"
     },
     {
         id: 10,
@@ -102,7 +103,7 @@ export const projectData = [
      {
         id: 12,
         title: "Goonj '26",
-        imgSrc: xpertpv,
+        imgSrc: goonj26,
         year: "2026",
         hasDevelopment: true,
         link: "https://goonj-website.vercel.app"
