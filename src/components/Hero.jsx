@@ -82,7 +82,7 @@ const Hero = () => {
         ref={nameRef}
         className="flex gap-2 font-cdL text-base md:text-lg justify-center tracking-[4px] md:tracking-[5.32px]"
       >
-        <p className="name">YASHPREET SINGH</p>
+        <p className="name">HI, I'M <span classname="font-bold">YASHPREET SINGH</span></p>
       </div>
 
       <div
