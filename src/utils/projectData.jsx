@@ -99,4 +99,12 @@ export const projectData = [
         hasDevelopment: false,
         link: "https://www.figma.com/design/Mu8ciXnEgK5HPoGa7MJJ3u/Nasscom-Project?m=auto&t=Frt7hdRX6LrlJfNZ-6"
     },
+     {
+        id: 12,
+        title: "Goonj '26",
+        imgSrc: xpertpv,
+        year: "2026",
+        hasDevelopment: true,
+        link: "https://goonj-website.vercel.app"
+    },
 ];
